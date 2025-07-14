@@ -1,0 +1,37 @@
+{
+  "name": "bria-protocol-contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for BRIA Protocol - DeFi Staking with RWA Integration",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:bsc-testnet": "hardhat run scripts/deploy.js --network bsc-testnet",
+    "deploy:bsc-mainnet": "hardhat run scripts/deploy.js --network bsc-mainnet",
+    "deploy:arbitrum": "hardhat run scripts/deploy.js --network arbitrum",
+    "verify": "hardhat verify"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.0",
+    "@openzeppelin/contracts-upgradeable": "^4.9.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.17.0",
+    "dotenv": "^16.3.1"
+  },
+  "keywords": [
+    "defi",
+    "staking",
+    "rwa",
+    "nft",
+    "dao",
+    "governance",
+    "solidity",
+    "ethereum",
+    "bsc",
+    "arbitrum"
+  ],
+  "author": "BRIA Protocol Team",
+  "license": "MIT"
+}
