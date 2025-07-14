@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Wallet, Menu, Activity } from 'lucide-react';
 
@@ -9,33 +10,57 @@ interface HeaderProps {
 }
 
 export const Header = ({ onConnectWallet, walletAddress, isConnected }: HeaderProps) => {
+  const location = useLocation();
+  
+  const isActive = (path: string) => location.pathname === path;
+  
   return (
     <header className="border-b border-primary/20 bg-card/50 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-primary rounded-full animate-pulse-glow" />
             <h1 className="text-2xl font-bold text-gradient">BRIA</h1>
             <span className="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full">
               PROTOCOL
             </span>
-          </div>
+          </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="#staking" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link 
+              to="/"
+              className={`transition-colors ${
+                isActive('/') ? 'text-primary font-medium' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/stake"
+              className={`transition-colors ${
+                isActive('/stake') ? 'text-primary font-medium' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
               Staking
-            </a>
-            <a href="#machines" className="text-muted-foreground hover:text-primary transition-colors">
-              Machines
-            </a>
-            <a href="#referral" className="text-muted-foreground hover:text-primary transition-colors">
+            </Link>
+            <Link 
+              to="/referral"
+              className={`transition-colors ${
+                isActive('/referral') ? 'text-primary font-medium' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
               Referral
-            </a>
-            <a href="#governance" className="text-muted-foreground hover:text-primary transition-colors">
+            </Link>
+            <Link 
+              to="/dao"
+              className={`transition-colors ${
+                isActive('/dao') ? 'text-primary font-medium' : 'text-muted-foreground hover:text-primary'
+              }`}
+            >
               DAO
-            </a>
+            </Link>
           </nav>
 
           {/* Wallet Connection */}
