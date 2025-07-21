@@ -4,12 +4,16 @@ import { Button } from '@/components/ui/button';
 import { Wallet, Menu, Activity } from 'lucide-react';
 
 interface HeaderProps {
-  onConnectWallet: () => void;
+  onConnectWallet?: () => void;
   walletAddress?: string;
-  isConnected: boolean;
+  isConnected?: boolean;
 }
 
-export const Header = ({ onConnectWallet, walletAddress, isConnected }: HeaderProps) => {
+export const Header = ({ 
+  onConnectWallet = () => {}, 
+  walletAddress, 
+  isConnected = false 
+}: HeaderProps = {}) => {
   const location = useLocation();
   
   const isActive = (path: string) => location.pathname === path;
